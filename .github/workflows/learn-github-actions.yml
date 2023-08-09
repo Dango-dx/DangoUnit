@@ -1,13 +1,32 @@
-name: learn-github-actions
-run-name: ${{ github.actor }} is learning GitHub Actions
-on: [push]
+name: 下载 CLI 并构建
+
+on:
+  push:
+    branches:
+      - main  # 你可以根据需要修改为相应的分支
+
 jobs:
-  check-bats-version:
-    runs-on: ubuntu-latest
+  prepare_and_build:
+    runs-on: ubuntu-latest  # 你可以选择适当的运行环境
+
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - name: 设置环境
+        run: export GRADLE_USER_HOME=$(pwd)/.gradle
+
+      - name: 检出代码
+        uses: actions/checkout@v2
+
+      - name: 下载 CLI
+        env:
+          ARTIFACT_LOCATION: https://nexus.xmxdev.com/
+        run: |
+          echo "GitHub Actions | 打印所有环境变量"
+          env
+          echo "${ARTIFACT_LOCATION}"
+#          mkdir -p .ci && curl -L -o .ci/taptap-cli.jar "${ARTIFACT_LOCATION}"
+
+      - name: 保存构建产物
+        uses: actions/upload-artifact@v2
         with:
-          node-version: '14'
-      - run: npm install -g bats
-      - run: bats -v
+          name: temp-cli
+          path: .ci/temp-cli.jar

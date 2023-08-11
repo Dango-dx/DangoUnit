@@ -9,6 +9,12 @@ jobs:
     runs-on: ubuntu-latest  # 你可以选择适当的运行环境
 
     steps:
+      # 在需要的步骤中设置 Node.js 版本
+      - name: 设置 Node.js 版本
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+
       - name: 设置环境
         run: export GRADLE_USER_HOME=$(pwd)/.gradle
 
@@ -23,8 +29,3 @@ jobs:
           env
           echo "${ARTIFACT_LOCATION}"
 
-      # 在需要的步骤中设置 Node.js 版本
-      - name: 设置 Node.js 版本
-        uses: actions/setup-node@v2
-        with:
-          node-version: 16

@@ -1,5 +1,4 @@
 name: 下载 CLI 并构建
-run-name: ${{ github.actor }} is learning GitHub Actions
 on:
   push:
     branches:
@@ -15,8 +14,6 @@ jobs:
 
       - name: 检出代码
         uses: actions/checkout@v2
-        with:
-          node-version: 16  # 设置使用 Node.js 版本 16
 
       - name: 下载 CLI
         env:

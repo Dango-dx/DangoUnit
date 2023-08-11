@@ -1,6 +1,9 @@
 name: 下载 CLI 并构建
 run-name: ${{ github.actor }} is learning GitHub Actions
-on: [push]
+on:
+  push:
+    branches:
+      - master
 
 jobs:
   prepare_and_build:

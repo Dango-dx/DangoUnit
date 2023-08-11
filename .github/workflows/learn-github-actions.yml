@@ -23,10 +23,3 @@ jobs:
           echo "GitHub Actions | 打印所有环境变量"
           env
           echo "${ARTIFACT_LOCATION}"
-#          mkdir -p .ci && curl -L -o .ci/taptap-cli.jar "${ARTIFACT_LOCATION}"
-
-      - name: 保存构建产物
-        uses: actions/upload-artifact@v2
-        with:
-          name: temp-cli
-          path: .ci/temp-cli.jar

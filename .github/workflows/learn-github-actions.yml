@@ -22,3 +22,9 @@ jobs:
           echo "GitHub Actions | 打印所有环境变量"
           env
           echo "${ARTIFACT_LOCATION}"
+
+      # 在需要的步骤中设置 Node.js 版本
+      - name: 设置 Node.js 版本
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16

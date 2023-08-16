@@ -12,10 +12,9 @@ jobs:
     steps:
       # 在需要的步骤中设置 Node.js 版本
       - name: 设置 Node.js 版本
-        uses: actions/setup-node@v2
-        with:
-          node-version: 16
-
+        run:
+          echo "GitHub Actions | 打印所有环境变量"
+          env
       - name: 设置环境
         run: export GRADLE_USER_HOME=$(pwd)/.gradle
 

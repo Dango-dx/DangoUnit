@@ -8,7 +8,7 @@ jobs:
 
     container:
       image: registry.cn-hangzhou.aliyuncs.com/dango/image_dx:v1.0  # 指定您的自定义 Docker 镜像及其标签
-
+      options: --platform linux/arm64
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2

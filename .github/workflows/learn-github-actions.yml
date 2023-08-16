@@ -6,8 +6,9 @@ on:
 
 jobs:
   prepare_and_build:
-    runs-on: dangodx/android-ci:v1.0  # 你可以选择适当的运行环境
-
+    runs-on: ubuntu-latest  # 你可以选择适当的运行环境
+    container:
+      images: dangodx/android-ci:v1.0
     steps:
       # 在需要的步骤中设置 Node.js 版本
       - name: 设置 Node.js 版本

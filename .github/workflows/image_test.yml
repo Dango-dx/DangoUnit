@@ -1,0 +1,18 @@
+name: Custom Docker Image Example
+
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    container:
+      image: registry.cn-hangzhou.aliyuncs.com/dango/image_dx:v1.0  # 指定您的自定义 Docker 镜像及其标签
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Run a custom command in the custom image
+        run: |
+          echo "Hello from the custom Docker image!"

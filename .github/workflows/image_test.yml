@@ -20,3 +20,5 @@ jobs:
           ls -a
           cd ../
           ls -a
+          cd ../
+          ls -a

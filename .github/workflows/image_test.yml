@@ -18,7 +18,15 @@ jobs:
           echo "Hello from the custom Docker image!"
           env
           ls -a
+          echo " ---- ---- "
           cd ../
           ls -a
+          echo " ---- ---- "
+          cd ../
+          ls -a
+          echo " ---- ---- "
+          cd ../
+          ls -a
+          echo " ---- ---- "
           cd ../
           ls -a

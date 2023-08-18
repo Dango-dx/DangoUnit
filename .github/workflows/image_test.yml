@@ -50,4 +50,4 @@ jobs:
       - name: Deploy
         run: |
           # Use the downloaded artifacts for deployment
-          cat my-artifacts/hello.txt
+          cat ./my-artifacts/hello.txt

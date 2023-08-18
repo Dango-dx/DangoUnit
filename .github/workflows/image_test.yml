@@ -17,4 +17,4 @@ jobs:
         run: |
           echo "Hello from the custom Docker image!"
           env
-          ls
+          ls -a

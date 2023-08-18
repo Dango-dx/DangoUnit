@@ -16,3 +16,4 @@ jobs:
       - name: Run a custom command in the custom image
         run: |
           echo "Hello from the custom Docker image!"
+          env

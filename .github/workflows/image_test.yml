@@ -2,15 +2,13 @@ name: Custom Docker Image Example
 
 on: push
 
-
-container:
-  image: registry.cn-hangzhou.aliyuncs.com/dango/image_dx:latest  # 指定您的自定义 Docker 镜像及其标签
-  options: --platform linux/amd64
-
 jobs:
   build:
     runs-on: ubuntu-latest
 
+    container:
+      image: registry.cn-hangzhou.aliyuncs.com/dango/image_dx:latest  # 指定您的自定义 Docker 镜像及其标签
+      options: --platform linux/amd64
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -22,3 +20,34 @@ jobs:
           ls -a
           echo " ---- ---- "
           pwd
+
+      - name: Build and package
+        run: |
+          # Your build commands here
+          mkdir dist
+          echo "Hello, world!" > dist/hello.txt
+
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v2
+        with:
+         name: my-artifacts
+         path: dist
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    container:
+      image: registry.cn-hangzhou.aliyuncs.com/dango/image_dx:latest  # 指定您的自定义 Docker 镜像及其标签
+      options: --platform linux/amd64
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Download Artifacts
+        uses: actions/download-artifact@v2
+        with:
+          name: my-artifacts
+
+      - name: Deploy
+        run: |
+          # Use the downloaded artifacts for deployment
+          cat my-artifacts/hello.txt

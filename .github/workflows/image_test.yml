@@ -47,6 +47,14 @@ jobs:
         with:
           name: my-artifacts
 
+      - name: 打印文件
+        run: |
+          ls -a
+          pwd
+          cd my-artifacts
+          pwd
+          ls -a
+
       - name: Deploy
         run: |
           # Use the downloaded artifacts for deployment

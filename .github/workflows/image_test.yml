@@ -19,14 +19,4 @@ jobs:
           env
           ls -a
           echo " ---- ---- "
-          cd ../
-          ls -a
-          echo " ---- ---- "
-          cd ../
-          ls -a
-          echo " ---- ---- "
-          cd ../
-          ls -a
-          echo " ---- ---- "
-          cd ../
-          ls -a
+          pwd

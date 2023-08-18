@@ -49,6 +49,7 @@ jobs:
 
       - name: 打印文件
         run: |
+          env
           ls -a
           pwd
 

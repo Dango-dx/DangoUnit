@@ -51,9 +51,6 @@ jobs:
         run: |
           ls -a
           pwd
-          cd my-artifacts
-          pwd
-          ls -a
 
       - name: Deploy
         run: |

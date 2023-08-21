@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
 
     container:
-      image: registry.cn-hangzhou.aliyuncs.com/dango/image_dx:latest  # 指定您的自定义 Docker 镜像及其标签
+      image: registry.cn-shanghai.aliyuncs.com/dango/android_ci:latest  # 指定您的自定义 Docker 镜像及其标签
       options: --platform linux/amd64
     steps:
       - name: Checkout repository
@@ -37,7 +37,7 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     container:
-      image: registry.cn-hangzhou.aliyuncs.com/dango/image_dx:latest  # 指定您的自定义 Docker 镜像及其标签
+      image: registry.cn-shanghai.aliyuncs.com/dango/android_ci:latest  # 指定您的自定义 Docker 镜像及其标签
       options: --platform linux/amd64
     steps:
       - name: Checkout repository

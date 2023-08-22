@@ -1,0 +1,25 @@
+name: Custom Docker Image Example
+
+on:
+  push:
+    paths:
+      - 'lib/widget/**'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    container:
+      image: registry.cn-shanghai.aliyuncs.com/dango/android_ci:latest  # 指定您的自定义 Docker 镜像及其标签
+      options: --platform linux/amd64
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: 打印环境变量
+        run: |
+          env
+
+      - name: Build and package
+        run: |
+          # Your build commands here
+          mkdir dist

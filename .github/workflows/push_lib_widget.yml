@@ -3,7 +3,7 @@ name: push_lib_widget
 on:
   push:
     paths:
-      - 'lib/widget/**'
+      - '**'
 jobs:
   build:
     runs-on: ubuntu-latest

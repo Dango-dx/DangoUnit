@@ -1,4 +1,4 @@
-name: Custom Docker Image Example
+name: push_lib_widget
 
 on:
   push:
@@ -19,7 +19,22 @@ jobs:
         run: |
           env
 
-      - name: Build and package
+      - name: Display Commit SHA
         run: |
-          # Your build commands here
-          mkdir dist
+          echo "Current Commit SHA: ${{ github.sha }}"
+
+      - name: Display Branch/Tag Name
+        run: |
+          echo "Current Ref: ${{ github.ref }}"
+
+      - name: Display Commit Author
+        run: |
+          echo "Commit Author: ${{ github.actor }}"
+
+      - name: Display Repository Name
+        run: |
+          echo "Repository: ${{ github.repository }}"
+
+      - name: Show Latest Commit
+        run: git log -n 1
+

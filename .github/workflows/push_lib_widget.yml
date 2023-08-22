@@ -36,5 +36,6 @@ jobs:
           echo "Repository: ${{ github.repository }}"
 
       - name: Show Latest Commit
-        run: git log -n 1
+        run: |
+          git log -n 1
 

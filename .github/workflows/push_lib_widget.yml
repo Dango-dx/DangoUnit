@@ -14,8 +14,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-        env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
       - name: 检查当前版本
         id: generate_version
         run: |
@@ -37,6 +35,8 @@ jobs:
           # Update the versionCode in the build file
           grep "VERSION_NAME" lib/widget/gradle.properties | grep '[0-9]\+$'
       - name: 上传2
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
         run: |
           pwd
           echo $GITHUB_TOKEN

@@ -30,7 +30,7 @@ jobs:
       - name: 修改本地版本号
         run: |
           # Update the versionCode in the build file
-          sed -i 's/\([0-9]\+\)$/0002/' lib/widget/gradle.properties
+          sed -i 's/\([0-9]\+\)$/${{ steps.generate_version.outputs.new_version }}"/' lib/widget/gradle.properties
       - name: 打印本地版本号
         run: |
           # Update the versionCode in the build file

@@ -35,8 +35,8 @@ jobs:
           # Update the versionCode in the build file
           grep "VERSION_NAME" lib/widget/gradle.properties | grep '[0-9]\+$'
       - name: 上传2
-        env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.TOKEN }}
         run: |
           pwd
           echo $GITHUB_TOKEN

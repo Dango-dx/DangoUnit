@@ -35,15 +35,13 @@ jobs:
         run: |
           # Update the versionCode in the build file
           grep "VERSION_NAME" lib/widget/gradle.properties | grep '[0-9]\+$'
-      - name: Checkout repository
-        uses: actions/push
       - name: 上传
         run: |
           git config --global --add safe.directory /__w/DangoUnit/DangoUnit
           git config --global user.email "github-actions@example.com"
           git config --global user.name "GitHub Actions"
           git commit -am "Update versionCode"
-          git push
+          git push origin master
         env:
           PAT: ${{ secrets.ANDROID_CI_PERSONAL_ACCESS_TOKENS }}
 

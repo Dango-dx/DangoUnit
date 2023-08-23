@@ -38,7 +38,7 @@ jobs:
         run: |
           pwd
           echo $GITHUB_TOKEN
-          git config --global --add safe.directory *
+          git config --global --add safe.directory /__w/DangoUnit/DangoUnit
           git config --global user.email "github-actions@example.com"
           git config --global user.name "GitHub Actions"
           git commit -am "Update versionCode"

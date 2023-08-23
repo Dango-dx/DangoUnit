@@ -15,13 +15,27 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Generate New Version Code
+      - name: 检查当前版本
+        id: generate_version
         run: |
           # Generate a new version code based on the previous one
           prev_version=$(grep "VERSION_NAME" lib/widget/gradle.properties | grep -o '[0-9]\+$')
           new_version=$((prev_version + 1))
           formatted_version=$(printf "%04d" "$new_version")
           echo "$formatted_version"
+          echo "new_version=$new_version" >> $GITHUB_OUTPUT
+      - name: 之前保存的版本号
+        run: |
+          echo "new_version = ${{ steps.generate_version.outputs.new_version }}"
+      - name: 修改本地版本号
+        run: |
+          # Update the versionCode in the build file
+          sed -i "s/versionCode [0-9]\+/versionCode 0002/" lib/widget/gradle.properties
+      - name: 打印本地版本号
+        run: |
+          # Update the versionCode in the build file
+          grep "VERSION_NAME" lib/widget/gradle.properties | grep '[0-9]\+$'
+
   build:
     runs-on: ubuntu-latest
 

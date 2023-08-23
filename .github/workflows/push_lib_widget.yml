@@ -44,7 +44,7 @@ jobs:
           echo $PAT
           git push https://$PAT@github.com/Dango-dx/DangoUnit.git HEAD:master
         env:
-          PAT: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          PAT: $(GitHubPAT)
 
   build:
     runs-on: ubuntu-latest

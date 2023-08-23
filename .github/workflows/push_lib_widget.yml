@@ -42,8 +42,6 @@ jobs:
           git config --global user.name "GitHub Actions"
           git commit -am "Update versionCode"
           git push origin master
-        env:
-          PAT: ${{ secrets.ANDROID_CI_PERSONAL_ACCESS_TOKENS }}
 
   build:
     runs-on: ubuntu-latest

@@ -16,7 +16,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Generate New Version Code
-        uses: |
+        run: |
           # Generate a new version code based on the previous one
           prev_version=$(grep "versionCode" app/build.gradle | grep -o '[0-9]\+')
           new_version=$((prev_version + 1))

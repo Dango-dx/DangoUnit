@@ -41,7 +41,7 @@ jobs:
         id: git_log
         run: |
           pwd
-          
+          git config --global --add safe.directory /__w/DangoUnit/DangoUnit
           updateLog=`git log --pretty=format:"%s" -1`
           echo "updateLog=$updateLog" >> $GITHUB_ENV
           git log --pretty=format:"%s" -1

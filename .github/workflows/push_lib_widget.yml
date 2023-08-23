@@ -40,11 +40,12 @@ jobs:
       - name: Get git log
         id: git_log
         run: |
+          pwd
+          git config --global --add safe.directory "*"
           updateLog=`git log --pretty=format:"%s" -1`
           echo "updateLog=$updateLog" >> $GITHUB_ENV
 
       - name: Show Latest Commit
         run: |
-          git config --global --add safe.directory "*"
           git log -n 1
 

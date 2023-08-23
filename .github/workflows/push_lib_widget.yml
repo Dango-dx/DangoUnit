@@ -44,7 +44,7 @@ jobs:
           git add .
           git commit -am "Update versionCode"
           echo ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-          # git push https://${{ secrets.PERSONAL_ACCESS_TOKEN }}@github.com/Dango-dx/DangoUnit.git HEAD:master
+          # git push https://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@github.com/Dango-dx/DangoUnit.git HEAD:master
           git push
         env:
           PAT: ${{ secrets.PERSONAL_ACCESS_TOKEN }}

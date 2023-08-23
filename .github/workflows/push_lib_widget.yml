@@ -41,9 +41,9 @@ jobs:
         id: git_log
         run: |
           pwd
-          git config --global --add safe.directory "*"
           updateLog=`git log --pretty=format:"%s" -1`
           echo "updateLog=$updateLog" >> $GITHUB_ENV
+          git log --pretty=format:"%s" -1
 
       - name: Show Latest Commit
         run: |

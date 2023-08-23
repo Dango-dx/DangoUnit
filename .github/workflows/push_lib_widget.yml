@@ -30,6 +30,7 @@ jobs:
       - name: Display Commit Author
         run: |
           echo "Commit Author: ${{ github.actor }}"
+          echo "Commit Author: ${{ github.actor }}"
 
       - name: Display Repository Name
         run: |

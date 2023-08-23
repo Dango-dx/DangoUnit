@@ -36,6 +36,8 @@ jobs:
           # Update the versionCode in the build file
           grep "VERSION_NAME" lib/widget/gradle.properties | grep '[0-9]\+$'
       - name: 上传2
+        env:
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
         run: |
           pwd
           git config --global --add safe.directory /__w/DangoUnit/DangoUnit
@@ -45,8 +47,6 @@ jobs:
           git commit -am "Update versionCode"
           echo ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           git push
-        env:
-          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
 
   build:
     runs-on: ubuntu-latest

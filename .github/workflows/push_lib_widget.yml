@@ -23,7 +23,7 @@ jobs:
           new_version=$((prev_version + 1))
           formatted_version=$(printf "%04d" "$new_version")
           echo "$formatted_version"
-          echo "new_version=$new_version" >> $GITHUB_OUTPUT
+          echo "new_version=$formatted_version" >> $GITHUB_OUTPUT
       - name: 之前保存的版本号
         run: |
           echo "new_version = ${{ steps.generate_version.outputs.new_version }}"

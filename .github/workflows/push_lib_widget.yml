@@ -42,6 +42,7 @@ jobs:
           git config --global user.email "github-actions@example.com"
           git config --global user.name "GitHub Actions"
           git commit -am "Update versionCode"
+          echo $PAT
           git push https://$PAT@github.com/Dango-dx/DangoUnit.git HEAD:master
         env:
           PAT: ${{ secrets.PERSONAL_ACCESS_TOKEN }}

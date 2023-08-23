@@ -35,17 +35,13 @@ jobs:
           # Update the versionCode in the build file
           grep "VERSION_NAME" lib/widget/gradle.properties | grep '[0-9]\+$'
       - name: 上传2
-#        env:
-
-#          GITHUB_TOKEN: ${{ secrets.TOKEN }}
         run: |
           pwd
           echo $GITHUB_TOKEN
-          git config --global --add safe.directory /__w/DangoUnit/DangoUnit
+          git config --global --add safe.directory *
           git config --global user.email "github-actions@example.com"
           git config --global user.name "GitHub Actions"
           git commit -am "Update versionCode"
-          echo ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           git push
 
   build:

@@ -5,6 +5,22 @@ on:
     paths:
       - '**'
 jobs:
+  prepare:
+    runs-on: ubuntu-latest
+
+    container:
+      image: registry.cn-shanghai.aliyuncs.com/dango/android_ci:latest  # 指定您的自定义 Docker 镜像及其标签
+      options: --platform linux/amd64
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Generate New Version Code
+        uses: |
+          # Generate a new version code based on the previous one
+          prev_version=$(grep "versionCode" app/build.gradle | grep -o '[0-9]\+')
+          new_version=$((prev_version + 1))
+          echo "::set-output name=new_version::$new_version"
   build:
     runs-on: ubuntu-latest
 

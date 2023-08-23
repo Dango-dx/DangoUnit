@@ -35,6 +35,8 @@ jobs:
         run: |
           # Update the versionCode in the build file
           grep "VERSION_NAME" lib/widget/gradle.properties | grep '[0-9]\+$'
+      - name: Checkout repository
+        uses: actions/push
       - name: 上传
         run: |
           git config --global --add safe.directory /__w/DangoUnit/DangoUnit

@@ -4,6 +4,10 @@ plugins {
     id 'com.vanniktech.maven.publish'
 }
 
+mavenPublishing{
+    coordinates("io.github.dango-dx", "lib_widget", "${VERSION_INFIX}.${VERSION_FIX}")
+}
+
 android {
     namespace 'com.dango.dx.lib.widget'
     compileSdk 33

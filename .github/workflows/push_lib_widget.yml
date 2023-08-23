@@ -20,7 +20,8 @@ jobs:
           # Generate a new version code based on the previous one
           prev_version=$(grep "VERSION_NAME" lib/widget/gradle.properties | grep -o '[0-9]\+$')
           new_version=$((prev_version + 1))
-          echo "$new_version"
+          formatted_version=$(printf "%04d" "$new_version")
+          echo "formatted_version"
   build:
     runs-on: ubuntu-latest
 

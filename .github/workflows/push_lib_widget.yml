@@ -35,6 +35,13 @@ jobs:
         run: |
           echo "Repository: ${{ github.repository }}"
 
+      # 获取git log
+      - name: Get git log
+        id: git_log
+        run: |
+          updateLog=`git log --pretty=format:"%s" -1`
+          echo "updateLog=$updateLog" >> $GITHUB_ENV
+
       - name: Show Latest Commit
         run: |
           git log -n 1

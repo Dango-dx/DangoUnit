@@ -35,6 +35,12 @@ jobs:
         run: |
           # Update the versionCode in the build file
           grep "VERSION_NAME" lib/widget/gradle.properties | grep '[0-9]\+$'
+      - name: 上传
+        run: |
+          git config --global user.email "github-actions@example.com"
+          git config --global user.name "GitHub Actions"
+          git commit -am "Update versionCode"
+          git push
 
   build:
     runs-on: ubuntu-latest

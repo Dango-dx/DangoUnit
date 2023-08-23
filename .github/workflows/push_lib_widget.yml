@@ -35,14 +35,16 @@ jobs:
         run: |
           # Update the versionCode in the build file
           grep "VERSION_NAME" lib/widget/gradle.properties | grep '[0-9]\+$'
-      - name: 上传4
+      - name: 上传2
         run: |
           git config --global --add safe.directory /__w/DangoUnit/DangoUnit
           git config --global user.email "github-actions@example.com"
           git config --global user.name "GitHub Actions"
           git commit -am "Update versionCode"
           echo $PAT
-          git push https://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@github.com/Dango-dx/DangoUnit.git HEAD:master
+          git push https://$PAT@github.com/Dango-dx/DangoUnit.git HEAD:master
+        env:
+          PAT: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
 
   build:
     runs-on: ubuntu-latest

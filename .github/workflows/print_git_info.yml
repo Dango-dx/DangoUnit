@@ -1,5 +1,5 @@
 name: 打印提交信息
-run-name: 打印提交信息2
+run-name: 打印提交信息 to ${{ inputs.deploy_target }} by @${{ github.actor }}
 on:
   push:
     paths:

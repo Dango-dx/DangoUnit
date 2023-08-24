@@ -3,7 +3,7 @@ name: 打印提交信息
 on:
   push:
     paths:
-      - '*'
+      - '**'
 jobs:
   prepare:
     runs-on: ubuntu-latest

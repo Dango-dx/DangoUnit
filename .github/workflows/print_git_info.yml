@@ -5,9 +5,11 @@ on:
     paths:
       - '**'
 jobs:
+  打印信息:
+    uses: Dango-dx/ReusableWorkflows/.github/workflows/print_github_info.yml@master
+
   prepare:
     runs-on: ubuntu-latest
-
     container:
       # 指定您的自定义 Docker 镜像及其标签
       image: registry.cn-shanghai.aliyuncs.com/dango/android_ci:latest
@@ -16,6 +18,3 @@ jobs:
     steps:
       - name: 拉取代码
         uses: actions/checkout@v2
-
-  print_github_info:
-    uses: Dango-dx/ReusableWorkflows/.github/workflows/print_github_info.yml@master

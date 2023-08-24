@@ -17,23 +17,5 @@ jobs:
       - name: 拉取代码
         uses: actions/checkout@v2
 
-      - name: 打印环境变量
-        run: |
-          env
-
-      - name: github.sha
-        run: |
-          echo "Current Commit SHA: ${{ github.sha }}"
-
-      - name: github.ref
-        run: |
-          echo "Current Ref: ${{ github.ref }}"
-
-      - name: github.actor
-        run: |
-          echo "Commit Author: ${{ github.actor }}"
-
-
-      - name: github.repository
-        run: |
-          echo "Repository: ${{ github.repository }}"
+      - name: 拉取代码
+        uses: Dango-dx/ReusableWorkflows/.github/workflows/print_github_info.yml

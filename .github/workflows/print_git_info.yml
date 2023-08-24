@@ -1,0 +1,38 @@
+name: 打印提交信息
+
+on:
+  push:
+    paths:
+      - '*'
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+
+    container:
+      # 指定您的自定义 Docker 镜像及其标签
+      image: registry.cn-shanghai.aliyuncs.com/dango/android_ci:latest
+      # platform
+      options: --platform linux/amd64
+    steps:
+      - name: 拉取代码
+        uses: actions/checkout@v2
+
+      - name: 打印环境变量
+        run: |
+          env
+
+      - name: github.sha
+        run: |
+          echo "Current Commit SHA: ${{ github.sha }}"
+
+      - name: github.ref
+        run: |
+          echo "Current Ref: ${{ github.ref }}"
+
+      - name: github.actor
+        run: |
+          echo "Commit Author: ${{ github.actor }}"
+
+      - name: github.repository
+        run: |
+          echo "Repository: ${{ github.repository }}"

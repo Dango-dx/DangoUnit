@@ -6,12 +6,6 @@ on:
       - '**'
 jobs:
   print_env:
-    runs-on: ubuntu-latest
-    container:
-      # 指定您的自定义 Docker 镜像及其标签
-      image: registry.cn-shanghai.aliyuncs.com/dango/android_ci:latest
-      # platform
-      options: --platform linux/amd64
     uses: Dango-dx/ReusableWorkflows/.github/workflows/print_github_info.yml@master
 
   prepare:

@@ -17,5 +17,5 @@ jobs:
       - name: 拉取代码
         uses: actions/checkout@v2
 
-  拉取代码:
+  print_github_info:
     uses: Dango-dx/ReusableWorkflows/.github/workflows/print_github_info.yml@master

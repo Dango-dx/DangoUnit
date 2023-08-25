@@ -33,21 +33,24 @@ jobs:
           cd build
           ls -a
           echo "-------->>>>>>"
-          cd intermediates
+          cd outputs
           ls -a
           echo "-------->>>>>>"
           cd apk
           ls -a
           echo "-------->>>>>>"
-          cd debug
+          cd release
           ls -a
           echo "-------->>>>>>"
+        continue-on-error: true
       - name: check
         run: |
-          cd ./app/build/intermediates/apk/debug/
+          cd ./app/build/outputs/apk/release/
           ls -a
+        continue-on-error: true
       - name: Upload Artifacts
         uses: actions/upload-artifact@v2
         with:
           name: my-artifacts
           path: ./app/build/intermediates/apk/debug/
+        continue-on-error: true

@@ -20,4 +20,5 @@ jobs:
 
       - name: 发布
         run: |
+          env
           chmod +x ./gradlew && ./gradlew assembleRelease

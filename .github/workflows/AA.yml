@@ -9,11 +9,11 @@ jobs:
 
   job0:
     runs-on: ubuntu-latest
-#    container:
+    container:
       # 指定您的自定义 Docker 镜像及其标签
-#      image: registry.cn-shanghai.aliyuncs.com/dango/android_ci:latest
+      image: registry.cn-shanghai.aliyuncs.com/dango/android_ci:latest
       # platform
-#      options: --platform linux/amd64
+      options: --platform linux/amd64
     steps:
       - name: Job 0
         run: |

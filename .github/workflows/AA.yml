@@ -25,10 +25,8 @@ jobs:
           ls -a
           chmod +x ./gradlew && ./gradlew assembleRelease
           ls -a
-        uses: actions/upload-artifact@v2
-        with:
-          name: my-artifacts
-          path: ./app/build/intermediates/apk/debug/
+          cd ./app/build/intermediates/apk/debug/
+          ls -a
       - name: check
         run: |
           cd ./app/build/intermediates/apk/debug/

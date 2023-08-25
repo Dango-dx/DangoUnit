@@ -23,3 +23,8 @@ jobs:
           export JAVA_HOME=$JAVA_HOME_17_X64
           env
           chmod +x ./gradlew && ./gradlew assembleRelease
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: my-artifacts
+          path: ./app/build/intermediates/apk/debug/

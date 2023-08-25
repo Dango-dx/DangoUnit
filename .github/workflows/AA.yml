@@ -17,4 +17,4 @@ jobs:
     steps:
       - name: Job 0
         run: |
-          echo "job0"
+          ./gradlew :lib:widget:publish

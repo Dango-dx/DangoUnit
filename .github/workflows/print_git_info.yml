@@ -1,9 +1,6 @@
 name: 打印提交信息
 run-name: 打印提交信息 by @${{ github.actor }}
-on:
-  push:
-    paths:
-      - '**'
+on: [push]
 jobs:
   print_env:
     uses: Dango-dx/ReusableWorkflows/.github/workflows/print_github_info.yml@master

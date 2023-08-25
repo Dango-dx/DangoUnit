@@ -3,6 +3,9 @@ name: Grouped Workflow
 on: [push]
 
 jobs:
+  print_env:
+    uses: Dango-dx/ReusableWorkflows/.github/workflows/print_github_info.yml@master
+
   job0:
     runs-on: ubuntu-latest
     steps:

@@ -1,4 +1,5 @@
-name: Grouped Workflow
+name: 打印提交信息
+run-name: 打印提交信息 by @${{ github.actor }}
 
 on: [push]
 

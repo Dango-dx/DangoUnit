@@ -20,5 +20,4 @@ jobs:
 
       - name: 发布
         run: |
-          ./gradle wrapper
-          ./gradlew :lib:widget:publish
+          chmod +x ./gradlew && ./gradlew assembleRelease

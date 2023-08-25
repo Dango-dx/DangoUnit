@@ -17,4 +17,4 @@ jobs:
     steps:
       - name: Job 0
         run: |
-          ./gradlew :lib:widget:publish
+          gradlew :lib:widget:publish

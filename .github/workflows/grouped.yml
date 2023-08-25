@@ -37,7 +37,7 @@ jobs:
 
   group1_job2:
     runs-on: ubuntu-latest
-    needs: [group1_job1, job1]  # Group 1 Job 2 依赖于 Group 1 Job 1
+    needs: [group1_job1, job1,job2]  # Group 1 Job 2 依赖于 Group 1 Job 1
     steps:
       - name: Step 1 in Group 1 Job 2
         run: echo "Step 1 in Group 1 Job 2"
@@ -47,6 +47,7 @@ jobs:
 
   group2_job1:
     runs-on: ubuntu-latest
+    needs: job0
     steps:
       - name: Step 1 in Group 2 Job 1
         run: echo "Step 1 in Group 2 Job 1"

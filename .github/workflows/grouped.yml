@@ -6,56 +6,61 @@ jobs:
   job0:
     runs-on: ubuntu-latest
     steps:
-      - name: 执行作业0
-        run: echo "Job 0 is running"
+      - name: Job 0
+        run: |
+          echo "job0"
+
+  job00:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Job 00
+        run: |
+          echo "job00"
 
   job1:
     runs-on: ubuntu-latest
-    needs: job0
+    needs: [job0]
     steps:
-      - name: 执行作业1
-        run: echo "Job 1 is running"
+      - name: Job 1
+        run: |
+          echo "job1"
+
+  job1_2:
+    runs-on: ubuntu-latest
+    needs: [job1]
+    steps:
+      - name: Job 1_2
+        run: |
+          echo "job1_2"
+
+  job1_3:
+    runs-on: ubuntu-latest
+    needs: [job1_2, job2]
+    steps:
+      - name: Job 1_3
+        run: |
+          echo "job1_3"
 
   job2:
-    runs-on: windows-latest
-    needs: group2_job1
-    steps:
-      - name: 执行作业2
-        run: echo "Job 2 is running"
-
-
-  group1_job1:
     runs-on: ubuntu-latest
+    needs: [job0]
     steps:
-      - name: Step 1 in Group 1 Job 1
-        run: echo "Step 1 in Group 1 Job 1"
+      - name: Job 2
+        run: |
+          echo "job2"
 
-  group1_job2:
-    runs-on: ubuntu-latest
-    needs: [group1_job1, job3,job2,job1]  # Group 1 Job 2 依赖于 Group 1 Job 1
-    steps:
-      - name: Step 1 in Group 1 Job 2
-        run: echo "Step 1 in Group 1 Job 2"
-
-      - name: Step 2 in Group 1 Job 2
-        run: echo "Step 2 in Group 1 Job 2"
-
-  group2_job1:
-    runs-on: ubuntu-latest
-    needs: job0
-    steps:
-      - name: Step 1 in Group 2 Job 1
-        run: echo "Step 1 in Group 2 Job 1"
-
-  group2_job2:
-    runs-on: ubuntu-latest
-    needs: group2_job1  # Group 2 Job 2 依赖于 Group 2 Job 1
-    steps:
-      - name: Step 1 in Group 2 Job 2
-        run: echo "Step 1 in Group 2 Job 2"
   job3:
-    runs-on: macOS-latest
-    needs: job0
+    runs-on: ubuntu-latest
+    needs: [job0]
     steps:
-      - name: 执行作业3
-        run: echo "Job 3 is running"
+      - name: Job 3
+        run: |
+          echo "job3"
+
+  job4:
+    runs-on: ubuntu-latest
+    needs: [job1_3, job3, job2]
+    steps:
+      - name: Job 4
+        run: |
+          echo "job4"

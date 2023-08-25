@@ -3,8 +3,15 @@ name: Grouped Workflow
 on: [push]
 
 jobs:
+  job0:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 执行作业0
+        run: echo "Job 0 is running"
+
   job1:
     runs-on: ubuntu-latest
+    needs: job0
     steps:
       - name: 执行作业1
         run: echo "Job 1 is running"
@@ -18,6 +25,7 @@ jobs:
 
   job3:
     runs-on: macOS-latest
+    needs: job0
     steps:
       - name: 执行作业3
         run: echo "Job 3 is running"

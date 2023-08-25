@@ -22,11 +22,19 @@ jobs:
         run: |
           export JAVA_HOME=$JAVA_HOME_17_X64
           env
-          ls -a
+          ls
           chmod +x ./gradlew && ./gradlew assembleRelease
-          ls -a
-          cd ./app/build/intermediates/apk/debug/
-          ls -a
+          ls
+          cd app
+          ls
+          cd build
+          ls
+          cd intermediates
+          ls
+          cd apk
+          ls
+          cd debug
+          ls
       - name: check
         run: |
           cd ./app/build/intermediates/apk/debug/

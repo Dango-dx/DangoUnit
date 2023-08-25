@@ -52,5 +52,5 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: my-artifacts
-          path: ./app/build/intermediates/apk/release
+          path: ./app/build/outputs/apk/release/
         continue-on-error: true

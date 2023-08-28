@@ -30,7 +30,7 @@ jobs:
           export JAVA_HOME=$JAVA_HOME_17_X64
           env
           chmod +x ./gradlew && ./gradlew :lib:widget:assemble
-          ./gradlew :lib:widget:publishAllPublicationsToMavenCentral --no-configuration-cache
+          ./gradlew :lib:widget:publish
         continue-on-error: true
       - name: check
         run: |

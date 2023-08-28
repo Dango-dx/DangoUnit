@@ -61,3 +61,11 @@ jobs:
           name: my-artifacts
           path: ./app/build/outputs/apk/release/
         continue-on-error: true
+      - name: upL
+        run: |
+          ./gradlew :lib:widget:publish
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: aar4
+          path: ./lib/widget/build/outputs/aar/

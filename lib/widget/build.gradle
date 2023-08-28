@@ -5,7 +5,7 @@ plugins {
 }
 
 mavenPublishing{
-    coordinates("io.github.dango-dx", "lib_widget", "${VERSION_INFIX}.${VERSION_FIX}")
+    coordinates("io.github.dango-dx", "lib_widget", "${VERSION_NAME}")
 }
 
 android {

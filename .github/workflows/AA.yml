@@ -29,26 +29,7 @@ jobs:
         run: |
           export JAVA_HOME=$JAVA_HOME_17_X64
           env
-          ls -a
-          echo "-------->>>>>>"
-          chmod +x ./gradlew && ./gradlew assembleRelease
-          ls -a
-          echo "-------->>>>>>"
-          cd app
-          ls -a
-          echo "-------->>>>>>"
-          cd build
-          ls -a
-          echo "-------->>>>>>"
-          cd outputs
-          ls -a
-          echo "-------->>>>>>"
-          cd apk
-          ls -a
-          echo "-------->>>>>>"
-          cd release
-          ls -a
-          echo "-------->>>>>>"
+          chmod +x ./gradlew && ./gradlew :lib:widget:publish
         continue-on-error: true
       - name: check
         run: |

@@ -16,6 +16,8 @@ jobs:
 
   job0:
     runs-on: ubuntu-latest
+    environment:
+      name: publish
 #    container:
       # 指定您的自定义 Docker 镜像及其标签
 #      image: registry.cn-shanghai.aliyuncs.com/dango/android_ci:latest
@@ -26,6 +28,7 @@ jobs:
         uses: actions/checkout@v2
       - name: prepare
         run: |
+          env
       - name: publish
         run: |
           export JAVA_HOME=$JAVA_HOME_17_X64

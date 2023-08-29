@@ -35,7 +35,7 @@ jobs:
           export ORG_GRADLE_PROJECT_signingInMemoryKey=${{ secrets.ORG_GRADLE_PROJECT_SIGNINGINMEMORYKEY }}
           export ORG_GRADLE_PROJECT_signingInMemoryKeyId=${{ secrets.ORG_GRADLE_PROJECT_SIGNINGINMEMORYKEYID }}
           export ORG_GRADLE_PROJECT_signingInMemoryKeyPassword=${{ secrets.ORG_GRADLE_PROJECT_SIGNINGINMEMORYKEYPASSWORD }}
-
+          env
           chmod +x ./gradlew
           ./gradlew :lib:widget:publish
         continue-on-error: true

@@ -42,7 +42,7 @@ jobs:
           ORG_GRADLE_PROJECT_signingInMemoryKeyPassword: ${{ secrets.ORG_GRADLE_PROJECT_SIGNINGINMEMORYKEYPASSWORD }}
         run: |
           chmod +x ./gradlew
-          ./gradlew clean build publishAllPublicationsToMavenCentralRepository -PRELEASE_SIGNING_ENABLED=true --no-daemon --no-parallel
+          ./gradlew :lib:widget:clean build publishAllPublicationsToMavenCentralRepository -PRELEASE_SIGNING_ENABLED=true --no-daemon --no-parallel
         continue-on-error: true
       - name: Upload
         uses: actions/upload-artifact@v2

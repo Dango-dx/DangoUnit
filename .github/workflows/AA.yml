@@ -26,15 +26,23 @@ jobs:
         uses: actions/checkout@v2
       - name: prepare
         run: |
-          export JAVA_HOME=$JAVA_HOME_17_X64
-          chmod +x ./gradlew
-      - name: assemble
-        run: |
-          env
-          ./gradlew :lib:widget:assemble
-        continue-on-error: true
+
+#      - name: assemble
+#        run: |
+#          env
+#          ./gradlew :lib:widget:assemble
+#        continue-on-error: true
       - name: publish
         run: |
+          export JAVA_HOME=$JAVA_HOME_17_X64
+          
+          export ORG_GRADLE_PROJECT_mavenCentralUsername = ${{ secrets.ORG_GRADLE_PROJECT_MAVENCENTRALUSERNAME }}
+          export ORG_GRADLE_PROJECT_mavenCentralPassword = ${{ secrets.ORG_GRADLE_PROJECT_MAVENCENTRALPASSWORD }}
+          export ORG_GRADLE_PROJECT_signingInMemoryKey = ${{ secrets.ORG_GRADLE_PROJECT_SIGNINGINMEMORYKEY }}
+          export ORG_GRADLE_PROJECT_signingInMemoryKeyId = ${{ secrets.ORG_GRADLE_PROJECT_SIGNINGINMEMORYKEYID }}
+          export ORG_GRADLE_PROJECT_signingInMemoryKeyPassword = ${{ secrets.ORG_GRADLE_PROJECT_SIGNINGINMEMORYKEYPASSWORD }}
+
+          chmod +x ./gradlew
           ./gradlew :lib:widget:publish
         continue-on-error: true
       - name: Upload

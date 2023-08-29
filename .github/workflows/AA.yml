@@ -27,11 +27,9 @@ jobs:
       - name: prepare
         run: |
           export JAVA_HOME=$JAVA_HOME_17_X64
-          env
           chmod +x ./gradlew
       - name: assemble
         run: |
-          env
           ./gradlew :lib:widget:assemble
         continue-on-error: true
       - name: publish

@@ -31,19 +31,13 @@ jobs:
           env
       - name: publish
         env:
-          mavenCentralUsername: ${{ secrets.ORG_GRADLE_PROJECT_MAVENCENTRALUSERNAME }}
-          mavenCentralPassword: ${{ secrets.ORG_GRADLE_PROJECT_MAVENCENTRALPASSWORD }}
-          signingInMemoryKey: ${{ secrets.ORG_GRADLE_PROJECT_SIGNINGINMEMORYKEY }}
-          signingInMemoryKeyId: ${{ secrets.ORG_GRADLE_PROJECT_SIGNINGINMEMORYKEYID }}
-          signingInMemoryKeyPassword: ${{ secrets.ORG_GRADLE_PROJECT_SIGNINGINMEMORYKEYPASSWORD }}
+          ORG_GRADLE_PROJECT_mavenCentralUsername: ${{ secrets.ORG_GRADLE_PROJECT_MAVENCENTRALUSERNAME }}
+          ORG_GRADLE_PROJECT_mavenCentralPassword: ${{ secrets.ORG_GRADLE_PROJECT_MAVENCENTRALPASSWORD }}
+          ORG_GRADLE_PROJECT_signingInMemoryKey: ${{ secrets.ORG_GRADLE_PROJECT_SIGNINGINMEMORYKEY }}
+          ORG_GRADLE_PROJECT_signingInMemoryKeyId: ${{ secrets.ORG_GRADLE_PROJECT_SIGNINGINMEMORYKEYID }}
+          ORG_GRADLE_PROJECT_signingInMemoryKeyPassword: ${{ secrets.ORG_GRADLE_PROJECT_SIGNINGINMEMORYKEYPASSWORD }}
         run: |
           export JAVA_HOME=$JAVA_HOME_17_X64
-          
-          export ORG_GRADLE_PROJECT_mavenCentralUsername=$mavenCentralUsername
-          export ORG_GRADLE_PROJECT_mavenCentralPassword=$mavenCentralPassword
-          export ORG_GRADLE_PROJECT_signingInMemoryKey=$signingInMemoryKey
-          export ORG_GRADLE_PROJECT_signingInMemoryKeyId=$signingInMemoryKeyId
-          export ORG_GRADLE_PROJECT_signingInMemoryKeyPassword=$signingInMemoryKeyPassword
           env
           chmod +x ./gradlew
           ./gradlew :lib:widget:publish

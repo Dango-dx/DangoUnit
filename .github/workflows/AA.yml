@@ -29,7 +29,6 @@ jobs:
       - name: prepare
         run: |
           env
-
       - name: publish
         env:
           mavenCentralUsername: ${{ secrets.ORG_GRADLE_PROJECT_MAVENCENTRALUSERNAME }}

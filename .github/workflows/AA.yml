@@ -40,7 +40,7 @@ jobs:
           export JAVA_HOME=$JAVA_HOME_17_X64
           env
           chmod +x ./gradlew
-          ./gradlew :lib:widget:publish
+          ./gradlew :lib:widget:publish --info
         continue-on-error: true
       - name: Upload
         uses: actions/upload-artifact@v2

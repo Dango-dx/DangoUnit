@@ -46,8 +46,6 @@ jobs:
           export ORG_GRADLE_PROJECT_signingInMemoryKeyPassword=$signingInMemoryKeyPassword
           env
           chmod +x ./gradlew
-          ./gradlew :lib:widget:clean
-          ./gradlew :lib:widget:assemble
           ./gradlew :lib:widget:publish
         continue-on-error: true
       - name: Upload

@@ -4,15 +4,15 @@ run-name: 打印提交信息 by @${{ github.actor }}
 on: [push]
 
 jobs:
-  print_env:
-    uses: Dango-dx/ReusableWorkflows/.github/workflows/print_github_info.yml@master
+#  print_env:
+#    uses: Dango-dx/ReusableWorkflows/.github/workflows/print_github_info.yml@master
 
-  print_a:
-    uses: Dango-dx/ReusableWorkflows/.github/workflows/publish_maven_central.yml@master
-    with:
-      module_path: :lib:widget
-      artifact_name: lib_test
-      version_name: 1.3.5
+#  print_a:
+#    uses: Dango-dx/ReusableWorkflows/.github/workflows/publish_maven_central.yml@master
+#    with:
+#      module_path: :lib:widget
+#      artifact_name: lib_test
+#      version_name: 1.3.5
 
   job0:
     runs-on: ubuntu-latest
@@ -24,27 +24,20 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-
-      - name: 发布
+      - name: prepare
         run: |
           export JAVA_HOME=$JAVA_HOME_17_X64
-          env
-          chmod +x ./gradlew && ./gradlew :lib:widget:assemble
+          chmod +x ./gradlew
+      - name: assemble
+        run: |
+          ./gradlew :lib:widget:assemble
+        continue-on-error: true
+      - name: publish
+        run: |
           ./gradlew :lib:widget:publish
         continue-on-error: true
-#      - name: check
-#        run: |
-#          cd ./app/build/outputs/apk/release/
-#          ls -a
-#        continue-on-error: true
-#      - name: Upload Artifacts
-#        uses: actions/upload-artifact@v2
-#        with:
-#          name: my-artifacts
-#          path: ./app/build/outputs/apk/release/
-#        continue-on-error: true
-      - name: Upload Artifacts
+      - name: Upload
         uses: actions/upload-artifact@v2
         with:
-          name: aar4
+          name: aar
           path: ./lib/widget/build/outputs/aar/

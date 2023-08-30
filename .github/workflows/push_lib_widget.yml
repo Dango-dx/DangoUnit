@@ -14,6 +14,12 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+      - name: check
+        run: |
+          prev_version_1=$(grep "VERSION_NAME=" gradle.properties | sed -E 's/VERSION_NAME=([0-9]+)\.[0-9]+\.[0-9]+/\1/')
+          prev_version_2=$(grep "VERSION_NAME=" gradle.properties | sed -E 's/VERSION_NAME=[0-9]+\.([0-9]+)\.[0-9]+/\1/')
+          prev_version_3=$(grep "VERSION_NAME=" gradle.properties | sed -E 's/VERSION_NAME=[0-9]+\.[0-9]+\.([0-9]+)/\1/')
+          echo "Formatted Versions: $prev_version_1, $prev_version_2, $prev_version_3"
       - name: 检查当前版本
         id: generate_version
         run: |
@@ -23,13 +29,6 @@ jobs:
           formatted_version=$(printf "%04d" "$new_version")
           echo "$formatted_version"
           echo "new_version=$formatted_version" >> $GITHUB_OUTPUT
-          
-          
-          prev_version_1=$(grep "VERSION_NAME=" gradle.properties | sed -E 's/VERSION_NAME=([0-9]+)\.[0-9]+\.[0-9]+/\1/')
-          prev_version_2=$(grep "VERSION_NAME=" gradle.properties | sed -E 's/VERSION_NAME=[0-9]+\.([0-9]+)\.[0-9]+/\1/')
-          prev_version_3=$(grep "VERSION_NAME=" gradle.properties | sed -E 's/VERSION_NAME=[0-9]+\.[0-9]+\.([0-9]+)/\1/')
-  
-          echo "Formatted Versions: $prev_version_1, $prev_version_2, $prev_version_3"
       - name: 之前保存的版本号
         run: |
           echo "new_version = ${{ steps.generate_version.outputs.new_version }}"

@@ -1,0 +1,8 @@
+name: push_lib_kit
+on: [ push ]
+jobs:
+  push_lib_kit:
+    uses: DangoDX/ReusableWorkflows/.github/workflows/publish_maven_central.yml@master
+    with:
+      module_path: lib/kit/
+    secrets: inherit

@@ -16,3 +16,4 @@ rootProject.name = "DangoUnit"
 include ':app'
 include ':lib:widget'
 include ':lib:kit'
+include ':common'

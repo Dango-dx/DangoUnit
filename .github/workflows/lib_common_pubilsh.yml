@@ -1,0 +1,8 @@
+name: push_lib_widget
+on: [ push ]
+jobs:
+  push_lib_widget:
+    uses: DangoDX/ReusableWorkflows/.github/workflows/publish_maven_central.yml@master
+    with:
+      module_path: common/
+    secrets: inherit

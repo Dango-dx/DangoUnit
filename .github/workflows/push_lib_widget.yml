@@ -6,6 +6,9 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+      - name: Lint
+        run: |
+          ./gradlew :lib:widget:lint
       - name: 检查当前版本
         id: generate_version
         run: |
@@ -24,7 +27,6 @@ jobs:
               new_version_2=$((new_version_2 % 100))
             fi
           fi
-          
           formatted_version=$(printf "%s" "$new_version_1.$new_version_2.$new_version_3")
           echo "new_version=$formatted_version" >> $GITHUB_OUTPUT
           echo "Formatted Versions: $formatted_version"
@@ -43,6 +45,15 @@ jobs:
         run: |
           # Update the versionCode in the build file
           grep "VERSION_NAME" lib/widget/gradle.properties | grep '[0-9]\+$'
+      - name: publish
+        env:
+          ORG_GRADLE_PROJECT_mavenCentralUsername: ${{ secrets.ORG_GRADLE_PROJECT_MAVENCENTRALUSERNAME }}
+          ORG_GRADLE_PROJECT_mavenCentralPassword: ${{ secrets.ORG_GRADLE_PROJECT_MAVENCENTRALPASSWORD }}
+          ORG_GRADLE_PROJECT_signingInMemoryKey: ${{ secrets.ORG_GRADLE_PROJECT_SIGNINGINMEMORYKEY }}
+          ORG_GRADLE_PROJECT_signingInMemoryKeyId: ${{ secrets.ORG_GRADLE_PROJECT_SIGNINGINMEMORYKEYID }}
+          ORG_GRADLE_PROJECT_signingInMemoryKeyPassword: ${{ secrets.ORG_GRADLE_PROJECT_SIGNINGINMEMORYKEYPASSWORD }}
+        run: |
+          ./gradlew :lib:widget:publish
       - name: 上传2
         run: |
           pwd
@@ -52,3 +63,8 @@ jobs:
           git config --global user.name "GitHub Actions"
           git commit -am "Update versionCode"
           git push
+      - name: Upload
+        uses: actions/upload-artifact@v2
+        with:
+          name: aar
+          path: ./lib/widget/build/outputs/aar/

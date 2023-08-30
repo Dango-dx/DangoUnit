@@ -6,5 +6,4 @@ jobs:
     with:
       module_path: lib/widget/
       artifact_name: ./lib/widget/build/outputs/aar/
-      version_name: 11
     secrets: inherit

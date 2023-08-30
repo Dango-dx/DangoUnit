@@ -14,7 +14,7 @@ jobs:
       - name: Lint
         run: |
           ./gradlew :lib:widget:lint
-      - name: 检查当前版本
+      - name: 检查当前版本号
         id: generate_version
         run: |
           prev_version_1=$(grep "VERSION_NAME=" lib/widget/gradle.properties | sed -E 's/VERSION_NAME=([0-9]+)\.[0-9]+\.[0-9]+/\1/')
@@ -35,22 +35,16 @@ jobs:
           formatted_version=$(printf "%s" "$new_version_1.$new_version_2.$new_version_3")
           echo "new_version=$formatted_version" >> $GITHUB_OUTPUT
           echo "Formatted Versions: $formatted_version"
-      - name: 之前保存的版本号
-        run: |
-          echo "new_version = ${{ steps.generate_version.outputs.new_version }}"
       - name: 修改本地版本号
         run: |
           # Update the versionCode in the build file
           new_version="${{ steps.generate_version.outputs.new_version }}"
           sed -i "s/^VERSION_NAME=.*/VERSION_NAME=$new_version/" lib/widget/gradle.properties
-      - name: 打印本地版本号前确认
-        run: |
-          cat lib/widget/gradle.properties
       - name: 打印本地版本号
         run: |
           # Update the versionCode in the build file
           grep "VERSION_NAME" lib/widget/gradle.properties | grep '[0-9]\+$'
-      - name: publish
+      - name: publish mavenCentral
         env:
           ORG_GRADLE_PROJECT_mavenCentralUsername: ${{ secrets.ORG_GRADLE_PROJECT_MAVENCENTRALUSERNAME }}
           ORG_GRADLE_PROJECT_mavenCentralPassword: ${{ secrets.ORG_GRADLE_PROJECT_MAVENCENTRALPASSWORD }}
@@ -59,15 +53,21 @@ jobs:
           ORG_GRADLE_PROJECT_signingInMemoryKeyPassword: ${{ secrets.ORG_GRADLE_PROJECT_SIGNINGINMEMORYKEYPASSWORD }}
         run: |
           ./gradlew :lib:widget:publish
-      - name: 上传2
+      - name: push versionCode
         run: |
-          pwd
-          echo $GITHUB_TOKEN
           git config --global --add safe.directory /__w/DangoUnit/DangoUnit
           git config --global user.email "github-actions@example.com"
           git config --global user.name "GitHub Actions"
           git commit -am "Update versionCode"
           git push
+      - name: tag versionCode
+        run: |
+          git config --global --add safe.directory /__w/DangoUnit/DangoUnit
+          git config --global user.email "github-actions@example.com"
+          git config --global user.name "GitHub Actions"
+          new_tag="lib_widget_v_${{ steps.generate_version.outputs.new_version }}"
+          git tag $new_tag
+          git push $new_tag
       - name: Upload
         uses: actions/upload-artifact@v2
         with:

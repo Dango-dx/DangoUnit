@@ -35,7 +35,7 @@ jobs:
           echo "new_version_1=$formatted_version_1" >> $GITHUB_OUTPUT
           echo "new_version_2=$formatted_version_2" >> $GITHUB_OUTPUT
           echo "new_version_3=$formatted_version_3" >> $GITHUB_OUTPUT
-        echo "Formatted Versions: $formatted_version_1, $formatted_version_2, $formatted_version_3"
+          echo "Formatted Versions: $formatted_version_1, $formatted_version_2, $formatted_version_3"
       - name: 检查当前版本
         id: generate_version
         run: |

@@ -3,19 +3,19 @@ on: [ push ]
 jobs:
   push_common:
     uses: DangoDX/ReusableWorkflows/.github/workflows/publish_maven_central.yml@master
-#    if: startsWith(github.event.head_commit.modified, 'common/')
+    if: startsWith(github.event.head_commit.modified, 'common/')
     with:
       module_path: common/
     secrets: inherit
   push_lib_widget:
     uses: DangoDX/ReusableWorkflows/.github/workflows/publish_maven_central.yml@master
-#    if: startsWith(github.event.head_commit.modified, 'lib/widget/')
+    if: startsWith(github.event.head_commit.modified, 'lib/widget/')
     with:
       module_path: lib/widget/
     secrets: inherit
   push_lib_kit:
     uses: DangoDX/ReusableWorkflows/.github/workflows/publish_maven_central.yml@master
-#    if: startsWith(github.event.head_commit.modified, 'lib/kit/')
+    if: startsWith(github.event.head_commit.modified, 'lib/kit/')
     with:
       module_path: lib/kit/
     secrets: inherit

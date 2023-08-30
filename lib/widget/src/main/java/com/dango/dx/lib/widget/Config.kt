@@ -4,8 +4,4 @@ class Config {
 // 注释
      val config:String = ""
 
-
-
-
-
 }

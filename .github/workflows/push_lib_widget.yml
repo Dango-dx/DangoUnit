@@ -16,9 +16,9 @@ jobs:
         uses: actions/checkout@v2
       - name: check
         run: |
-          prev_version_1=$(grep "VERSION_NAME=" gradle.properties | sed -E 's/VERSION_NAME=([0-9]+)\.[0-9]+\.[0-9]+/\1/')
-          prev_version_2=$(grep "VERSION_NAME=" gradle.properties | sed -E 's/VERSION_NAME=[0-9]+\.([0-9]+)\.[0-9]+/\1/')
-          prev_version_3=$(grep "VERSION_NAME=" gradle.properties | sed -E 's/VERSION_NAME=[0-9]+\.[0-9]+\.([0-9]+)/\1/')
+          prev_version_1=$(grep "VERSION_NAME=" lib/widget/gradle.properties | sed -E 's/VERSION_NAME=([0-9]+)\.[0-9]+\.[0-9]+/\1/')
+          prev_version_2=$(grep "VERSION_NAME=" lib/widget/gradle.properties | sed -E 's/VERSION_NAME=[0-9]+\.([0-9]+)\.[0-9]+/\1/')
+          prev_version_3=$(grep "VERSION_NAME=" lib/widget/gradle.properties | sed -E 's/VERSION_NAME=[0-9]+\.[0-9]+\.([0-9]+)/\1/')
           echo "Formatted Versions: $prev_version_1, $prev_version_2, $prev_version_3"
       - name: 检查当前版本
         id: generate_version

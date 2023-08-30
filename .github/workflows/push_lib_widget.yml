@@ -67,7 +67,7 @@ jobs:
           git config --global user.name "GitHub Actions"
           new_tag="lib_widget_v_${{ steps.generate_version.outputs.new_version }}"
           git tag $new_tag
-          git push $new_tag
+          git push origin $new_tag
       - name: Upload
         uses: actions/upload-artifact@v2
         with:

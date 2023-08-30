@@ -1,8 +1,10 @@
 name: 打印提交信息
 run-name: 打印提交信息 by @${{ github.actor }}
 
-on: [ push ]
-
+on:
+  push:
+    paths:
+      - 'A'
 jobs:
   job0:
     runs-on: ubuntu-latest
@@ -11,9 +13,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-      - name: prepare
-        run: |
-          env
       - name: Set up JDK 17
         uses: actions/setup-java@v2
         with:
@@ -22,6 +21,26 @@ jobs:
       - name: Lint
         run: |
           ./gradlew :lib:widget:lint
+      - name: 检查当前版本
+        id: generate_version
+        run: |
+          # Generate a new version code based on the previous one
+          prev_version=$(grep "VERSION_NAME" lib/widget/gradle.properties | grep -o '[0-9]\+$')
+          new_version=$((prev_version + 1))
+          formatted_version=$(printf "%04d" "$new_version")
+          echo "$formatted_version"
+          echo "new_version=$formatted_version" >> $GITHUB_OUTPUT
+      - name: 之前保存的版本号
+        run: |
+          echo "new_version = ${{ steps.generate_version.outputs.new_version }}"
+      - name: 修改本地版本号
+        run: |
+          # Update the versionCode in the build file
+          sed -i 's/\([0-9]\+\)$/${{ steps.generate_version.outputs.new_version }}/' lib/widget/gradle.properties
+      - name: 打印本地版本号
+        run: |
+          # Update the versionCode in the build file
+          grep "VERSION_FIX" lib/widget/gradle.properties | grep '[0-9]\+$'
       - name: publish
         env:
           ORG_GRADLE_PROJECT_mavenCentralUsername: ${{ secrets.ORG_GRADLE_PROJECT_MAVENCENTRALUSERNAME }}

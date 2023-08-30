@@ -5,5 +5,4 @@ jobs:
     uses: DangoDX/ReusableWorkflows/.github/workflows/publish_maven_central.yml@master
     with:
       module_path: lib/widget/
-      artifact_name: ./lib/widget/build/outputs/aar/
     secrets: inherit

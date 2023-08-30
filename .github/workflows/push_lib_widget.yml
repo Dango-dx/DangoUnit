@@ -60,7 +60,7 @@ jobs:
           git config --global user.email "github-actions@example.com"
           git config --global user.name "GitHub Actions"
           PREV_COMMIT_MESSAGE=$(git log -1 --pretty=format:%s)
-          NEW_COMMIT_MESSAGE="Update versionCode --> $PREV_COMMIT_MESSAGE"
+          NEW_COMMIT_MESSAGE="$PREV_COMMIT_MESSAGE -->  Update versionCode"
           git commit -am "$NEW_COMMIT_MESSAGE"
           git push
       - name: tag versionCode

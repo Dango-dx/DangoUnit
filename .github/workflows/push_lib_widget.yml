@@ -33,8 +33,8 @@ jobs:
           fi
           
           formatted_version_1=$(printf "%d" "$new_version_1")
-          formatted_version_2=$(printf "%02d" "$new_version_2")
-          formatted_version_3=$(printf "%03d" "$new_version_3")
+          formatted_version_2=$(printf "%d" "$new_version_2")
+          formatted_version_3=$(printf "%d" "$new_version_3")
   
           echo "new_version_1=$formatted_version_1" >> $GITHUB_OUTPUT
           echo "new_version_2=$formatted_version_2" >> $GITHUB_OUTPUT

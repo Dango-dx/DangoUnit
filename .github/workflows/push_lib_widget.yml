@@ -28,7 +28,7 @@ jobs:
           prev_version_1=$(grep "VERSION_NAME=" gradle.properties | sed -E 's/VERSION_NAME=([0-9]+)\.[0-9]+\.[0-9]+/\1/')
           prev_version_2=$(grep "VERSION_NAME=" gradle.properties | sed -E 's/VERSION_NAME=[0-9]+\.([0-9]+)\.[0-9]+/\1/')
           prev_version_3=$(grep "VERSION_NAME=" gradle.properties | sed -E 's/VERSION_NAME=[0-9]+\.[0-9]+\.([0-9]+)/\1/')
-
+  
           new_version_1=$((prev_version_1 + 1))
           new_version_2=$((prev_version_2 + 1))
           new_version_3=$((prev_version_3 + 1))

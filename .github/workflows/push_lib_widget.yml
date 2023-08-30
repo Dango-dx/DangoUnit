@@ -1,7 +1,7 @@
 name: push_lib_widget
 on: [ push ]
 jobs:
-  prepare:
+  push:
     runs-on: ubuntu-latest
     steps:
       - name: Set up JDK 17
@@ -14,7 +14,7 @@ jobs:
       - name: Lint
         run: |
           ./gradlew :lib:widget:lint
-      - name: 检查当前版本号
+      - name: Check the current version number
         id: generate_version
         run: |
           prev_version_1=$(grep "VERSION_NAME=" lib/widget/gradle.properties | sed -E 's/VERSION_NAME=([0-9]+)\.[0-9]+\.[0-9]+/\1/')
@@ -23,7 +23,7 @@ jobs:
           new_version_1=$prev_version_1
           new_version_2=$prev_version_2
           new_version_3=$((prev_version_3 + 1))
-          echo "当前版本号 Versions: $prev_version_1.$prev_version_2.$prev_version_3"
+          echo "current version number : $prev_version_1.$prev_version_2.$prev_version_3"
           if [ $new_version_3 -gt 999 ]; then
             new_version_2=$((new_version_2 + 1))
             new_version_3=$((new_version_3 % 1000))
@@ -35,16 +35,16 @@ jobs:
           formatted_version=$(printf "%s" "$new_version_1.$new_version_2.$new_version_3")
           echo "new_version=$formatted_version" >> $GITHUB_OUTPUT
           echo "Formatted Versions: $formatted_version"
-      - name: 修改本地版本号
+      - name: Modify the local version number
         run: |
           # Update the versionCode in the build file
           new_version="${{ steps.generate_version.outputs.new_version }}"
           sed -i "s/^VERSION_NAME=.*/VERSION_NAME=$new_version/" lib/widget/gradle.properties
-      - name: 打印本地版本号
+      - name: Print local version number
         run: |
           # Update the versionCode in the build file
           grep "VERSION_NAME" lib/widget/gradle.properties | grep '[0-9]\+$'
-      - name: publish mavenCentral
+      - name: Publish mavenCentral
         env:
           ORG_GRADLE_PROJECT_mavenCentralUsername: ${{ secrets.ORG_GRADLE_PROJECT_MAVENCENTRALUSERNAME }}
           ORG_GRADLE_PROJECT_mavenCentralPassword: ${{ secrets.ORG_GRADLE_PROJECT_MAVENCENTRALPASSWORD }}
@@ -53,8 +53,7 @@ jobs:
           ORG_GRADLE_PROJECT_signingInMemoryKeyPassword: ${{ secrets.ORG_GRADLE_PROJECT_SIGNINGINMEMORYKEYPASSWORD }}
         run: |
           ./gradlew :lib:widget:publish
-
-      - name: push versionCode
+      - name: Push versionCode
         run: |
           git config --global --add safe.directory /__w/DangoUnit/DangoUnit
           git config --global user.email "github-actions@example.com"
@@ -63,7 +62,7 @@ jobs:
           NEW_COMMIT_MESSAGE="$PREV_COMMIT_MESSAGE -->  Update versionCode"
           git commit -am "$NEW_COMMIT_MESSAGE"
           git push
-      - name: tag versionCode
+      - name: Push tag
         run: |
           git config --global --add safe.directory /__w/DangoUnit/DangoUnit
           git config --global user.email "github-actions@example.com"
@@ -71,7 +70,7 @@ jobs:
           new_tag="lib_widget_v_${{ steps.generate_version.outputs.new_version }}"
           git tag $new_tag
           git push origin $new_tag
-      - name: Upload
+      - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
           name: aar

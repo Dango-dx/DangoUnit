@@ -1,5 +1,9 @@
 name: push_lib_widget
-on: [ push ]
+#on: [ push ]
+on:
+  push:
+    paths:
+      - 'A'
 jobs:
   push:
     runs-on: ubuntu-latest

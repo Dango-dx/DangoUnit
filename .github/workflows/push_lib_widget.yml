@@ -34,7 +34,7 @@ jobs:
           fi
           
           formatted_version=$(printf "%s" "$formatted_version_1.$formatted_version_2.$formatted_version_3")
-          echo "new_version=formatted_version" >> $GITHUB_OUTPUT
+          echo "new_version=$formatted_version" >> $GITHUB_OUTPUT
           echo "Formatted Versions: $formatted_version"
       - name: 之前保存的版本号
         run: |

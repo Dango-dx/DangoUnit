@@ -1,0 +1,5 @@
+name: push_lib_widget
+on: [ push ]
+jobs:
+  print_env:
+    uses: Dango-dx/ReusableWorkflows/.github/workflows/publish_maven_central.yml@master

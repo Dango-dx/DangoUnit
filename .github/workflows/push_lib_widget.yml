@@ -53,13 +53,6 @@ jobs:
           ORG_GRADLE_PROJECT_signingInMemoryKeyPassword: ${{ secrets.ORG_GRADLE_PROJECT_SIGNINGINMEMORYKEYPASSWORD }}
         run: |
           ./gradlew :lib:widget:publish
-      - name: push versionCode
-        run: |
-          git config --global --add safe.directory /__w/DangoUnit/DangoUnit
-          git config --global user.email "github-actions@example.com"
-          git config --global user.name "GitHub Actions"
-          git commit -am "Update versionCode"
-          git push
       - name: tag versionCode
         run: |
           git config --global --add safe.directory /__w/DangoUnit/DangoUnit
@@ -68,6 +61,13 @@ jobs:
           new_tag="lib_widget_v_${{ steps.generate_version.outputs.new_version }}"
           git tag $new_tag
           git push origin $new_tag
+      - name: push versionCode
+        run: |
+          git config --global --add safe.directory /__w/DangoUnit/DangoUnit
+          git config --global user.email "github-actions@example.com"
+          git config --global user.name "GitHub Actions"
+          git commit -am "Update versionCode"
+          git push
       - name: Upload
         uses: actions/upload-artifact@v2
         with:

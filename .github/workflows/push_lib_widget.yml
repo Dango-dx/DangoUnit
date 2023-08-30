@@ -23,7 +23,7 @@ jobs:
           new_version_1=$prev_version_1
           new_version_2=$prev_version_2
           new_version_3=$((prev_version_3 + 1))
-          
+          echo "当前版本号 Versions: $prev_version_1.$prev_version_2.$prev_version_3"
           if [ $new_version_3 -gt 999 ]; then
             new_version_2=$((new_version_2 + 1))
             new_version_3=$((new_version_3 % 1000))
@@ -53,6 +53,16 @@ jobs:
           ORG_GRADLE_PROJECT_signingInMemoryKeyPassword: ${{ secrets.ORG_GRADLE_PROJECT_SIGNINGINMEMORYKEYPASSWORD }}
         run: |
           ./gradlew :lib:widget:publish
+
+      - name: push versionCode
+        run: |
+          git config --global --add safe.directory /__w/DangoUnit/DangoUnit
+          git config --global user.email "github-actions@example.com"
+          git config --global user.name "GitHub Actions"
+          PREV_COMMIT_MESSAGE=$(git log -1 --pretty=format:%s)
+          NEW_COMMIT_MESSAGE="Update versionCode --> $PREV_COMMIT_MESSAGE"
+          git commit -am "$NEW_COMMIT_MESSAGE"
+          git push
       - name: tag versionCode
         run: |
           git config --global --add safe.directory /__w/DangoUnit/DangoUnit
@@ -61,13 +71,6 @@ jobs:
           new_tag="lib_widget_v_${{ steps.generate_version.outputs.new_version }}"
           git tag $new_tag
           git push origin $new_tag
-      - name: push versionCode
-        run: |
-          git config --global --add safe.directory /__w/DangoUnit/DangoUnit
-          git config --global user.email "github-actions@example.com"
-          git config --global user.name "GitHub Actions"
-          git commit -am "Update versionCode"
-          git push
       - name: Upload
         uses: actions/upload-artifact@v2
         with:

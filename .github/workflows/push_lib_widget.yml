@@ -1,9 +1,5 @@
 name: push_lib_widget
 on: [ push ]
-#on:
-#  push:
-#    paths:
-#      - '**'
 jobs:
   prepare:
     runs-on: ubuntu-latest
@@ -52,52 +48,3 @@ jobs:
           git config --global user.name "GitHub Actions"
           git commit -am "Update versionCode"
           git push
-#      - name: 发布
-#        run: |
-#          ./gradlew :lib:widget:publish
-
-#  build:
-#    runs-on: ubuntu-latest
-#
-##    container:
-##      image: registry.cn-shanghai.aliyuncs.com/dango/android_ci:latest  # 指定您的自定义 Docker 镜像及其标签
-##      options: --platform linux/amd64
-#    steps:
-#      - name: Checkout repository
-#        uses: actions/checkout@v2
-#
-#      - name: 打印环境变量
-#        run: |
-#          env
-#
-#      - name: Display Commit SHA
-#        run: |
-#          echo "Current Commit SHA: ${{ github.sha }}"
-#
-#      - name: Display Branch/Tag Name
-#        run: |
-#          echo "Current Ref: ${{ github.ref }}"
-#
-#      - name: Display Commit Author
-#        run: |
-#          echo "Commit Author: ${{ github.actor }}"
-#          echo "Commit Author: ${{ github.actor }}"
-#
-#      - name: Display Repository Name
-#        run: |
-#          echo "Repository: ${{ github.repository }}"
-#
-#      # 获取git log
-#      - name: Get git log
-#        id: git_log
-#        run: |
-#          pwd
-#          git config --global --add safe.directory /__w/DangoUnit/DangoUnit
-#          updateLog=`git log --pretty=format:"%s" -1`
-#          echo "updateLog=$updateLog" >> $GITHUB_ENV
-#          git log --pretty=format:"%s" -1
-#
-#      - name: Show Latest Commit
-#        run: |
-#          git log -n 1
-

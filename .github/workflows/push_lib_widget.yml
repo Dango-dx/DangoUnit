@@ -47,15 +47,15 @@ jobs:
         run: |
           # Update the versionCode in the build file
           grep "VERSION_NAME" lib/widget/gradle.properties | grep '[0-9]\+$'
-#      - name: 上传2
-#        run: |
-#          pwd
-#          echo $GITHUB_TOKEN
-#          git config --global --add safe.directory /__w/DangoUnit/DangoUnit
-#          git config --global user.email "github-actions@example.com"
-#          git config --global user.name "GitHub Actions"
-#          git commit -am "Update versionCode"
-#          git push
+      - name: 上传2
+        run: |
+          pwd
+          echo $GITHUB_TOKEN
+          git config --global --add safe.directory /__w/DangoUnit/DangoUnit
+          git config --global user.email "github-actions@example.com"
+          git config --global user.name "GitHub Actions"
+          git commit -am "Update versionCode"
+          git push
 #      - name: 发布
 #        run: |
 #          ./gradlew :lib:widget:publish

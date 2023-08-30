@@ -26,10 +26,14 @@ jobs:
           if [ $new_version_3 -gt 999 ]; then
             new_version_2=$((new_version_2 + 1))
             new_version_3=$((new_version_3 % 1000))
+            if [ $new_version_2 -gt 99 ]; then
+              new_version_1=$((new_version_1 + 1))
+              new_version_2=$((new_version_2 % 100))
+            fi
           fi
-  
+          
           formatted_version_1=$(printf "%d" "$new_version_1")
-          formatted_version_2=$(printf "%d" "$new_version_2")
+          formatted_version_2=$(printf "%02d" "$new_version_2")
           formatted_version_3=$(printf "%03d" "$new_version_3")
   
           echo "new_version_1=$formatted_version_1" >> $GITHUB_OUTPUT

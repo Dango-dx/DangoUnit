@@ -12,6 +12,7 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
+
 rootProject.name = "DangoUnit"
 include ':app'
 include ':lib:widget'

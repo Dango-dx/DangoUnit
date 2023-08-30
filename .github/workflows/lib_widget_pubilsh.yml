@@ -3,3 +3,7 @@ on: [ push ]
 jobs:
   print_env:
     uses: DangoDX/ReusableWorkflows/.github/workflows/publish_maven_central.yml@master
+    with:
+      module_path: aar
+      artifact_name: ./lib/widget/build/outputs/aar/
+      version_name: 11

@@ -2,7 +2,7 @@ name: push_lib_widget
 on:
   push:
     paths:
-      - './gradle.properties'
+      - 'gradle.properties'
 jobs:
   common:
     uses: DangoDX/ReusableWorkflows/.github/workflows/publish_maven_central.yml@master

@@ -4,10 +4,14 @@ on: [ push ]
 
 jobs:
   push_common:
-    uses: DangoDX/ReusableWorkflows/.github/workflows/publish_maven_central.yml@master
-    with:
-      module_path: common/
-    secrets: inherit
+    - name: l
+      run: |
+        git diff --name-only ${{ github.event.before }} ${{ github.event.after }}
+    - name: 2
+      uses: DangoDX/ReusableWorkflows/.github/workflows/publish_maven_central.yml@master
+      with:
+        module_path: common/
+      secrets: inherit
   push_lib_widget:
     uses: DangoDX/ReusableWorkflows/.github/workflows/publish_maven_central.yml@master
     with:

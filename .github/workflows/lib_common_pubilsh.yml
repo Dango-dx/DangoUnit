@@ -6,7 +6,7 @@ jobs:
     steps:
       - name: print
         run: |
-          echo ${ github.event.head_commit.modified }
+          echo ${{ github.event.head_commit.modified }}
   push_common:
     uses: DangoDX/ReusableWorkflows/.github/workflows/publish_maven_central.yml@master
     if: startsWith(github.event.head_commit.modified, 'common/**')

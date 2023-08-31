@@ -6,6 +6,7 @@ jobs:
     with:
       module_path: common/
     secrets: inherit
+
   push_lib_widget:
     uses: DangoDX/ReusableWorkflows/.github/workflows/publish_maven_central.yml@master
     with:

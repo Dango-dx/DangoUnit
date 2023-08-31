@@ -7,6 +7,7 @@ jobs:
       - name: print
         run: |
           echo ${{ toJson(github) }}
+          cat ${{ github.event_path }}
   push_common:
     uses: DangoDX/ReusableWorkflows/.github/workflows/publish_maven_central.yml@master
     if: startsWith(github.event.head_commit.modified, 'common/**')

@@ -4,7 +4,7 @@ jobs:
   print:
     runs-on: ubuntu-latest
     steps:
-      name: Job 0
+      name: Job
       run: |
         echo ${ github.event.head_commit.modified }
   push_common:

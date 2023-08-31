@@ -1,17 +1,20 @@
 name: push_lib_widget
-on: [ push ]
+on:
+  push:
+    paths:
+      - './gradle.properties'
 jobs:
-  push_common:
+  common:
     uses: DangoDX/ReusableWorkflows/.github/workflows/publish_maven_central.yml@master
     with:
       module_path: common/
     secrets: inherit
-  push_lib_widget:
+  lib_widget:
     uses: DangoDX/ReusableWorkflows/.github/workflows/publish_maven_central.yml@master
     with:
       module_path: lib/widget/
     secrets: inherit
-  push_lib_kit:
+  lib_kit:
     uses: DangoDX/ReusableWorkflows/.github/workflows/publish_maven_central.yml@master
     with:
       module_path: lib/kit/

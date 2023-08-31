@@ -4,14 +4,16 @@ on: [ push ]
 
 jobs:
   push_common:
-    - name: l
-      run: |
-        git diff --name-only ${{ github.event.before }} ${{ github.event.after }}
-    - name: 2
-      uses: DangoDX/ReusableWorkflows/.github/workflows/publish_maven_central.yml@master
-      with:
-        module_path: common/
-      secrets: inherit
+    runs-on: ubuntu-latest
+    steps:
+      - name: Display changed files
+        run: |
+          git diff --name-only ${{ github.event.before }} ${{ github.event.after }}
+      - name: Execute publish_maven_central for common
+        uses: DangoDX/ReusableWorkflows/.github/workflows/publish_maven_central.yml@master
+        with:
+          module_path: common/
+        secrets: inherit
   push_lib_widget:
     uses: DangoDX/ReusableWorkflows/.github/workflows/publish_maven_central.yml@master
     with:

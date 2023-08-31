@@ -2,6 +2,7 @@ name: push_lib_widget
 on: [push]
 jobs:
   common:
+    runs-on: ubuntu-latest
     steps:
       - name: Send
         uses: GavinHome/action-dingding@v1.0

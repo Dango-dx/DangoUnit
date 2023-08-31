@@ -2,7 +2,7 @@ name: push_lib_widget
 on: [push]
 jobs:
   common:
-    - name: Send dingding notify
+    - name: Send
       uses: GavinHome/action-dingding@v1.0
       with:
         token: 67b3d5302637555a9ef5c9ddb06b13d9d16d02fcb6fa119792154340046ea022

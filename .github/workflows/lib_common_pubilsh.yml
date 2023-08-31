@@ -6,7 +6,7 @@ jobs:
     steps:
       - name: print
         run: |
-          echo ${{ toJson(github) }}
+#          echo ${{ toJson(github) }}
           cat ${{ github.event_path }}
   push_common:
     uses: DangoDX/ReusableWorkflows/.github/workflows/publish_maven_central.yml@master

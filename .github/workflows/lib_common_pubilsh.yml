@@ -1,6 +1,5 @@
 name: push_lib_widget
 on: [ push ]
-
 jobs:
   push_common:
     uses: DangoDX/ReusableWorkflows/.github/workflows/publish_maven_central.yml@master

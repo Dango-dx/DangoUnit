@@ -1,0 +1,23 @@
+name: 每隔1分钟执行示例
+
+on:
+  schedule:
+    - cron: '*/1 * * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Send
+        uses: zcong1993/actions-ding@master
+        with:
+          dingToken: 67b3d5302637555a9ef5c9ddb06b13d9d16d02fcb6fa119792154340046ea022
+          body: |
+            {
+              "msgtype": "markdown",
+              "markdown": {
+                "title": "action", 
+                "text": "定时任务测试",
+              }
+            }

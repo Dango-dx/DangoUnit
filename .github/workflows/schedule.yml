@@ -1,4 +1,4 @@
-name: 每隔1分钟执行示例
+name: Test
 
 on: push
 

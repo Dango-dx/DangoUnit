@@ -5,7 +5,8 @@ on:
 
 jobs:
   build:
-    uses: DangoDX/ReusableWorkflows/.github/workflows/publish_maven_central_v2.yml@master
+    uses: DangoDX/ReusableWorkflows/.github/workflows/publish_maven_central.yml@master
     with:
-      module_paths_v2: ['common/' , 'lib/widget/' , 'lib/kit/']
+      module_path: common/
+#      module_paths_v2: ['common/' , 'lib/widget/' , 'lib/kit/']
     secrets: inherit

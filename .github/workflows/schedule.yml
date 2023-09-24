@@ -7,7 +7,9 @@ on: push
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    strategy:
+      matrix:
+        version: [10, 12, 14]
     steps:
       - name: Send
         uses: zcong1993/actions-ding@master
@@ -18,6 +20,6 @@ jobs:
               "msgtype": "markdown",
               "markdown": {
                 "title": "action", 
-                "text": "定时任务测试",
+                "text": "定时任务测试 ${{ matrix.version }} ",
               }
             }

@@ -1,8 +1,6 @@
 name: 每隔1分钟执行示例
 
 on: push
-#  schedule:
-#    - cron: '*/5 * * * *'
 
 jobs:
   build:

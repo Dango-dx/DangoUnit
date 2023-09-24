@@ -7,7 +7,7 @@ on: push
 jobs:
   build:
     runs-on: ubuntu-latest
-    uses: DangoDX/ReusableWorkflows/.github/workflows/publish_maven_centra_v2l.yml@master
+    uses: DangoDX/ReusableWorkflows/.github/workflows/publish_maven_centra_v2.yml@master
     with:
       module_paths_v2: ['common/' , 'lib/widget/' , 'lib/kit/']
     secrets: inherit

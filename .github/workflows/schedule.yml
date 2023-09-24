@@ -11,30 +11,7 @@ jobs:
       matrix:
         version: [10, 12, 14]
     steps:
-      - name: Send
-        uses: zcong1993/actions-ding@master
-        with:
-          dingToken: 67b3d5302637555a9ef5c9ddb06b13d9d16d02fcb6fa119792154340046ea022
-          body: |
-            {
-              "msgtype": "markdown",
-              "markdown": {
-                "title": "action", 
-                "text": "定时任务测试 ${{ matrix.version }} ",
-              }
-            }
-  build2:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Send
-        uses: zcong1993/actions-ding@master
-        with:
-          dingToken: 67b3d5302637555a9ef5c9ddb06b13d9d16d02fcb6fa119792154340046ea022
-          body: |
-            {
-              "msgtype": "markdown",
-              "markdown": {
-                "title": "action", 
-                "text": "定时任务测试22222",
-              }
-            }
+      uses: DangoDX/ReusableWorkflows/.github/workflows/publish_maven_central.yml@master
+      with:
+        module_path: ['common/' , 'lib/widget/' , 'lib/kit/']
+      secrets: inherit

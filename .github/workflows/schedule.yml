@@ -11,7 +11,7 @@ jobs:
       matrix:
         version: [10, 12, 14]
     steps:
-      uses: DangoDX/ReusableWorkflows/.github/workflows/publish_maven_central.yml@master
+      uses: DangoDX/ReusableWorkflows/.github/workflows/publish_maven_centra_v2l.yml@master
       with:
-        module_path: ['common/' , 'lib/widget/' , 'lib/kit/']
+        module_paths_v2: ['common/' , 'lib/widget/' , 'lib/kit/']
       secrets: inherit

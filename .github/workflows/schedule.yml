@@ -7,9 +7,6 @@ on: push
 jobs:
   build:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        version: [10, 12, 14]
     steps:
       uses: DangoDX/ReusableWorkflows/.github/workflows/publish_maven_centra_v2l.yml@master
       with:

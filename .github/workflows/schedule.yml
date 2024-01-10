@@ -1,4 +1,4 @@
-name: Test
+name: 发布 AAR
 
 on:
   push:

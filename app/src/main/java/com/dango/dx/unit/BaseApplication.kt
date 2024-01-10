@@ -1,11 +1,11 @@
 package com.dango.dx.unit
 
 import android.app.Application
-import com.dango.dx.lib.kit.devLog
+import com.dango.dx.lib.kit.logDev
 
-class App : Application() {
+class BaseApplication : Application() {
     override fun onCreate() {
         super.onCreate()
-        devLog { "Application onCreate" }
+        logDev { "Application onCreate" }
     }
 }

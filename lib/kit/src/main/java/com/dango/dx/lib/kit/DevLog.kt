@@ -4,7 +4,7 @@ import android.util.Log
 import java.lang.Exception
 
 @Suppress("unused")
-inline fun devLog(vararg tags: Any?, msgBlock: () -> String = { "" }) {
+inline fun logDev(vararg tags: Any?, msgBlock: () -> String = { "" }) {
     val vTag = if (tags.isEmpty()) {
         ""
     } else {

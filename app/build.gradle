@@ -52,7 +52,10 @@ dependencies {
 
     implementation 'io.github.dango-dx:lib_widget:1.1.0'
 
-    implementation project(path: ':common')
-    implementation project(path: ':lib:kit')
-    implementation project(path: ':lib:widget')
+    implementation 'com.bytedance.tools.codelocator:codelocator-core:2.0.3'
+
+    implementation project(path: ':dBiz:display')
+    implementation project(path: ':dComm:common')
+    implementation project(path: ':dLib:kit')
+    implementation project(path: ':dLib:widget')
 }

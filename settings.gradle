@@ -12,12 +12,14 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-        gradlePluginPortal()
+        maven { url "https://jitpack.io" }
+//        gradlePluginPortal()
     }
 }
 
 rootProject.name = "DangoUnit"
 include ':app'
-include ':lib:widget'
-include ':lib:kit'
-include ':common'
+include ':dBiz:display'
+include ':dComm:common'
+include ':dLib:widget'
+include ':dLib:kit'

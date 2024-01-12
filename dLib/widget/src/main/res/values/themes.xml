@@ -1,0 +1,35 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- https://developer.android.com/reference/android/R.styleable#Theme -->
+    <style name="Base.Theme.DangoUnit" parent="Theme.Material3.Dark.NoActionBar">
+        <!--默认界面背景颜色 -->
+        <item name="android:windowBackground">@color/dx_background</item>
+        <!--
+        应用的主要品牌颜色。
+        -->
+        <item name="colorPrimary">@color/dx_color_2</item>
+        <!--
+        主要品牌颜色的深色变体。
+        · 状态栏颜色
+        -->
+        <item name="colorPrimaryDark">@color/dx_transparent</item>
+        <!--
+        导航栏的颜色。
+        -->
+        <item name="android:navigationBarColor">@color/dx_background</item>
+
+        <!--BottomNavigation -->
+        <item name="bottomNavigationStyle">@style/Widget.App.BottomNavigationView</item>
+
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    </style>
+
+
+    <style name="Widget.App.BottomNavigationView" parent="Widget.Material3.BottomNavigationView">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.BottomNavigationView</item>
+    </style>
+
+    <style name="ThemeOverlay.App.BottomNavigationView" parent="">
+        <item name="colorSurface">#1A1A1A</item>
+    </style>
+</resources>

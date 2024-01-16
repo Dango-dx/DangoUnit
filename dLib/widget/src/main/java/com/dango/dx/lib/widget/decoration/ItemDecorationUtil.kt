@@ -2,7 +2,10 @@ package com.dango.dx.lib.widget.decoration
 
 import android.graphics.Color
 import androidx.annotation.Px
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.dango.dx.lib.widget.DxWidget
+import com.dango.dx.lib.widget.R
 
 object ItemDecorationUtil {
 
@@ -18,7 +21,7 @@ object ItemDecorationUtil {
         return CommonItemDecoration(
             LinearLayoutProps(
                 dividerWidth = dividerWidth,
-                colorInt = Color.WHITE,
+                colorInt = ContextCompat.getColor(DxWidget.context, R.color.dx_divider),
                 startOffset = startOffset,
                 endOffset = endOffset,
                 startPadding = startPadding,

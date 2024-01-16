@@ -2,6 +2,7 @@ package com.dango.dx.biz.display
 
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -44,15 +45,35 @@ abstract class BaseDisplayActivity : BaseActivity<DxDisplayActivityBaseBinding>(
     private inner class InnerAdapter : BaseQuickAdapter<DisplayBean, InnerViewHolder>(data) {
         override fun onCreateViewHolder(context: Context, parent: ViewGroup, viewType: Int): InnerViewHolder {
             val b = DxDisplayCardDisplayBinding.inflate(LayoutInflater.from(context), parent, false)
-            return InnerViewHolder(b)
+            return InnerViewHolder(b).apply {
+                b.root.setOnClickListener {
+                    val i = item ?: return@setOnClickListener
+                    when (i) {
+                        is ActivityDisplayBean -> {
+                            try {
+                                startActivity(Intent(this@BaseDisplayActivity, i.activity))
+                            } catch (e: Exception) {
+                                e.printStackTrace()
+                            }
+                        }
+
+                        is MethodDisplayBean -> {
+                            i.block.invoke()
+                        }
+                    }
+                }
+            }
         }
 
         override fun onBindViewHolder(holder: InnerViewHolder, position: Int, item: DisplayBean?) {
+            holder.item = item
             holder.binding.tvLabel.text = item?.title
         }
     }
 
-    private inner class InnerViewHolder(val binding: DxDisplayCardDisplayBinding) : RecyclerView.ViewHolder(binding.root)
+    private inner class InnerViewHolder(val binding: DxDisplayCardDisplayBinding) : RecyclerView.ViewHolder(binding.root) {
+        var item: DisplayBean? = null
+    }
 }
 
 sealed class DisplayBean(var title: String)

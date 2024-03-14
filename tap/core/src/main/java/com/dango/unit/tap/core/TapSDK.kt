@@ -16,7 +16,7 @@ object TapSDK {
     private val TAG = TapSDK::class.java.canonicalName
 
     @Volatile
-    private var isDebugEnabledField = false
+    private var isDebugEnabledField = BuildConfig.DEBUG
 
 
     fun sdkInitialize(applicationContext: Context) {

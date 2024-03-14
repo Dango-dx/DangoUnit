@@ -17,7 +17,7 @@ import com.dango.dx.lib.widget.dialog.BaseBottomSheetDialog
 class UIDisplayActivity : BaseDisplayActivity() {
     override val data: List<DisplayBean> = listOf(
         MethodDisplayBean("BaseBottomSheetDialog") {
-            BaseBottomSheetDialog(this).show()
+//            BaseBottomSheetDialog(this).show()
         },
         MethodDisplayBean("Dialog2") {
             Toast.makeText(this, "Dialog2", Toast.LENGTH_LONG).show()

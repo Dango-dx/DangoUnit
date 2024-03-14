@@ -9,5 +9,6 @@ jobs:
   build:
     uses: DangoDX/ReusableWorkflows/.github/workflows/publish_maven_central_v2.yml@master
     with:
-      module_paths_v2: '{"module": [":dLib:widget", ":dLib:kit", ":tap:core"]}'
+      module_paths_v2: '{"module": [":tap:core"]}'
+#      module_paths_v2: '{"module": [":dLib:widget", ":dLib:kit", ":tap:core"]}'
     secrets: inherit

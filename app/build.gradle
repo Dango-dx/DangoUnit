@@ -52,7 +52,7 @@ dependencies {
 
     implementation 'io.github.dango-dx:lib_widget:1.1.0'
 
-    implementation 'io.github.DangoDX:tap-core:0.0.1'
+    implementation 'io.github.DangoDX:tap-core:0.1.3'
 
     implementation 'com.bytedance.tools.codelocator:codelocator-core:2.0.3'
 

@@ -2,9 +2,9 @@
 buildscript {
     dependencies {
         // vanniktech 发布插件
-        classpath 'com.vanniktech:gradle-maven-publish-plugin:0.25.3'
+        classpath libs.gradle.maven.publish.plugin
         // Kotlin Javadoc，非必须
-        classpath "org.jetbrains.dokka:dokka-gradle-plugin:1.6.20"
+        classpath libs.dokka.gradle.plugin
     }
 }
 plugins {
